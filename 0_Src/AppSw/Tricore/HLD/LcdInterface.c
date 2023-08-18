@@ -301,7 +301,7 @@ void HLD_LcdInterface_page1 (void)
 	Lcd_sprintf_col_inv_revised(Y_LINE2, 104+CHAR_WIDTH_HALF+CHAR_WIDTH*2, "%02d.%01d", LV_Voltage / 100, LV_Voltage % 100); //230131 test: /100 -> /10
 	*/
 
-	Lcd_sprintf_col_inv_revised(Y_LINE2, 104, "PWR");
+	Lcd_sprintf_col_inv_revised(Y_LINE2, 104, "PW");
 	Lcd_sprintf_col_inv_revised(Y_LINE2, 104+CHAR_WIDTH_HALF+CHAR_WIDTH*2, "%02d.%01d", PowerWithdraw / 1000, PowerWithdraw % 1000); //230131 test: /100 -> /10
 	GLCD_setTextColor(COLOR_BLACK);
 

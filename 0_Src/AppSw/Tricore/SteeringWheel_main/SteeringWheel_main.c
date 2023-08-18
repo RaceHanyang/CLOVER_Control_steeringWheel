@@ -21,8 +21,8 @@ const uint32 StWhlMsgId3 = 0x00101F02UL;
 
 //const uint32 StWhBattCoolingTXID = 0x237BC01;
 //const uint32 StWhRadiCoolingTXID = 0x237C01;
-const uint32 StWhlRSWMsgId = 0x237BB01UL;
-
+//const uint32 StWhlRSWMsgId = 0x237BB01UL;
+const uint32 StWhlRSWMsgId = 0x00101F10UL;
 
 SteeringWheel_main_t SteeringWheel_main;
 SteeringWheel_RSW_t SteeringWheel_RSW;
@@ -55,7 +55,8 @@ void SteeringWheel_main_init(void)
 		CanCommunication_Message_Config config;
 		config.messageId 		= 	StWhlMsgId3;
 		config.frameType		=	IfxMultican_Frame_receive;
-        config.dataLen			=	IfxMultican_DataLengthCode_4;
+        //config.dataLen			=	IfxMultican_DataLengthCode_4;
+		config.dataLen			=	IfxMultican_DataLengthCode_8;
         config.node				=	&CanCommunication_canNode0;
         CanCommunication_initMessage(&SteeringWheel_main.msgObj3, &config);
 	}

@@ -48,6 +48,7 @@ uint64 ticToc_10ms_s0 = 0;
 uint64 ticToc_10ms_s1 = 0;
 uint64 ticToc_100ms_s4 = 0;
 uint64 ticToc_100ms_s14 = 0;
+uint64 ticToc_100ms_s34 = 0;
 
 
 note_t test_M[]=
@@ -119,6 +120,9 @@ void Task_1ms (void)
 
 	ticToc_1ms_flag = (IfxStm_get(&MODULE_STM0) - stm_buf) * 1000000 / (IfxStm_getFrequency(&MODULE_STM0));
 }
+
+uint32 tick_1ms = 0;
+uint32 tick_100ms = 0;
 void Task_IsrCb_1ms (void)
 {
 	stm_buf_1ms = IfxStm_get(&MODULE_STM0);
@@ -130,7 +134,7 @@ void Task_IsrCb_1ms (void)
 
 	}
 
-
+	tick_1ms++;
 	ticToc_1ms = (IfxStm_get(&MODULE_STM0) - stm_buf_1ms)*1000000/(IfxStm_getFrequency(&MODULE_STM0));
 }
 /**********************************************************************/
@@ -161,6 +165,7 @@ void Task_100ms (void)
 	if(Task.counter_100ms%2 == 0)
 	{
 //		LED_blinking();
+		//SteeringWheel_run_10ms();
 
 	}
 }
@@ -188,6 +193,10 @@ void Task_100ms_slot24(void)
 }
 void Task_100ms_slot34(void)
 {
+	stm_buf = IfxStm_get(&MODULE_STM0);
+	//SteeringWheel_run_10ms();
+	tick_100ms++;
+	ticToc_100ms_s34 = (IfxStm_get(&MODULE_STM0) - stm_buf)*1000000/(IfxStm_getFrequency(&MODULE_STM0));
 
 }
 void Task_100ms_slot44(void)
